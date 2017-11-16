@@ -1,7 +1,7 @@
 <?php
 
 include 'koneksi.php';
-$sql = "SELECT 	nama_barang, jumlah, tgl_masuk, id_jenis, keadaan FROM barang";
+$sql = "SELECT 	id_barang, nama_barang, jumlah, tgl_masuk, id_jenis, keadaan FROM barang";
 $data = mysqli_query($koneksi, $sql);
  
 //var_dump($data);
@@ -21,6 +21,7 @@ $data = mysqli_query($koneksi, $sql);
 			<th>Tgl Masuk</th>
 			<th>Jenis</th>
 			<th>Keadaan</th>
+			<th>Aksi</th>
 		</tr>
 <?php
 	foreach ($data as $barang):
@@ -35,6 +36,10 @@ $data = mysqli_query($koneksi, $sql);
 			<td><?php echo $barang['id_jenis'];?>
 			</td>
 			<td><?php echo $barang['keadaan'];?>
+			</td>
+			<td>
+				<a href="ubah_barang.php?id=<?php echo $barang['id_barang']?>">Edit</a>
+				<a href="hapus_barang.php?id=<?php echo $barang['id_barang']?>">Delete</a>
 			</td>
 		</tr>
 <?php
