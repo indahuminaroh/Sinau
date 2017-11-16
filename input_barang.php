@@ -1,11 +1,22 @@
 <?php
+include 'koneksi.php';
 if (isset($_POST['submit'])) {
 	$nama = $_POST['nama'];
 	$jumlah = $_POST['jumlah'];
 	$jenis = $_POST['jenis'];
 	$keadaan = $_POST['keadaan'];
 
-echo $nama . "," . $jumlah . "," . $jenis . "," . $keadaan;
+//echo $nama . "," . $jumlah . "," . $jenis . "," . $keadaan;
+
+	$sql = "INSERT INTO barang(nama_barang, jumlah, id_jenis, keadaan) VALUES ('$nama', '$jumlah', '$jenis', '$keadaan')";
+	$data = mysqli_query($koneksi, $sql);
+
+	if ($data) {
+		echo "berhasi;";
+	}else {
+		echo "gagal";
+		echo mysqli_error($koneksi);
+	}
 }
 ?>
 <!DOCTYPE html>
